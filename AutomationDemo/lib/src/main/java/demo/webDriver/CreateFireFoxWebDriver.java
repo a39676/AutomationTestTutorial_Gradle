@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
-public class CreateWebDriver {
+public class CreateFireFoxWebDriver {
 	
 	public static void main(String[] args) {
 		WebDriver driver = buildFireFoxWebDriver();
