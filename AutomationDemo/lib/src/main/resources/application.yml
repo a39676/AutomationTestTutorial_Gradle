@@ -1,0 +1,26 @@
+# AutomationDemo
+server:
+  port: 10003  # 程序在本地占用的端口号
+
+spring:
+  application:
+    name: AutomationDemo
+  http:
+    encoding:
+      charset: UTF-8 # 指定程序编码
+      enabled: true
+      force: true
+    
+    
+logging: # 日志相关配置
+  level: 
+    root: ERROR  
+    org.springframework.web: DEBUG
+    
+  pattern: # 日志输出格式配置
+    # 控制台输出格式
+    console: "%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"
+    # 文件内输出格式
+    file: "[%p] [%d{yyyy-MM-dd HH:mm:ss}][%c]%m%n [%thread] %-5level %logger{36}"
+      
+  file: D:/tmp/logs/AutomationDemo.log # 日志文件输出路径

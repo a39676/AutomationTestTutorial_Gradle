@@ -1,12 +1,21 @@
-// AutomationDemo 00 
+// AutomationDemo 04 
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
 
 buildscript {
-	repositories { 
+	repositories {
     	mavenCentral()
     	jcenter()
 	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.9.RELEASE")
+	}
+}
+
+bootJar {
+	baseName = 'AutomationDemo'
 }
 
 group = 'AutomationDemo'
@@ -31,6 +40,11 @@ repositories {
 
 // 依赖
 dependencies {
+
+	// spring boot
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter', version: '2.5.3'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-devtools'
 	
 	// commons
 	implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.7'
@@ -41,5 +55,4 @@ dependencies {
 	// json
     implementation group: 'net.sf.json-lib', name: 'json-lib', version: '2.4', classifier: 'jdk15'
     implementation group: 'com.google.code.gson', name: 'gson', version: '2.8.5'
-    
 }
