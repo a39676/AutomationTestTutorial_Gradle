@@ -5,10 +5,12 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CreateChromeWebDriver {
 	
-	public static WebDriver buildFireFoxWebDriver() {
+	public WebDriver buildFireFoxWebDriver() {
 		// chromedriver path 
 		String path = "D:/auxiliary/seleniumWebDriver/chromedriver.exe";
 		String driverType = "webdriver.chrome.driver";

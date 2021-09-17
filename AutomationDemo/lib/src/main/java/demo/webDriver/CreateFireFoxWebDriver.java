@@ -5,23 +5,12 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CreateFireFoxWebDriver {
 	
-	public static void main(String[] args) {
-		WebDriver driver = buildFireFoxWebDriver();
-		// 打开 bing.com
-		driver.get("http://bing.com");
-		try {
-			// 等待10秒
-			Thread.sleep(10000L);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		} 
-		driver.quit();
-	}
-
-	public static WebDriver buildFireFoxWebDriver() {
+	public WebDriver buildFireFoxWebDriver() {
 		// geckodriver path 
 		String path = "D:/auxiliary/seleniumWebDriver/geckodriver.exe";
 		String driverType = "webdriver.gecko.driver";
