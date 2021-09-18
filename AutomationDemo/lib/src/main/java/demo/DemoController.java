@@ -1,5 +1,8 @@
 package demo;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,6 +12,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import demo.mapper.StudentMapper;
+import demo.pojo.po.Student;
+import demo.pojo.po.StudentExample;
 import demo.webDriver.CreateChromeWebDriver;
 import demo.webDriver.CreateFireFoxWebDriver;
 
@@ -21,6 +27,18 @@ public class DemoController {
 	private CreateFireFoxWebDriver fireFoxDriver;
 	@Autowired
 	private CreateChromeWebDriver chromeDriver;
+	@Autowired
+	private StudentMapper studentMapper;
+	
+	@GetMapping(value = "/queryStudent")
+	@ResponseBody
+	public List<String> queryStudent() {
+		StudentExample example = new StudentExample();
+		example.createCriteria().andIdBetween(2, 5);
+		List<Student> studentList = studentMapper.selectByExample(example);
+		List<String> studentNameList = studentList.stream().map(po -> po.getStudentName()).collect(Collectors.toList());
+		return studentNameList;
+	}
 
 	@GetMapping(value = "/createFireFox")
 	@ResponseBody
